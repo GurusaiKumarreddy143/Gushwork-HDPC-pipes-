@@ -1,0 +1,59 @@
+/* Page layout: 1240px max content width + responsive gutters (all breakpoints). */
+
+:root {
+    --container-max: 1240px;
+
+    /* ≤800px — phones / narrow viewports (e.g. iPhone 12); keep side gutters tight */
+    --layout-pad-x: 10px;
+    --layout-pad-y: 48px;
+
+    /* Image aspect ratios — update when design screens specify each asset */
+    --aspect-hero-main: 1 / 1;
+    --aspect-hero-thumb: 1 / 1;
+}
+
+/* 801px+ — wider gutters + roomier vertical rhythm between sections */
+@media (min-width: 801px) {
+    :root {
+        --layout-pad-x: 60px;
+        --layout-pad-y: 80px;
+    }
+}
+
+/* 1081px–1200px */
+@media (min-width: 1081px) {
+    :root {
+        --layout-pad-x: 80px;
+        --layout-pad-y: 80px;
+    }
+}
+
+/* 1201px+ (includes 1440px, 1600px) */
+@media (min-width: 1201px) {
+    :root {
+        --layout-pad-x: 100px;
+        --layout-pad-y: 100px;
+    }
+}
+
+.container {
+    box-sizing: border-box;
+    width: min(var(--container-max), max(0px, calc(100% - 2 * var(--layout-pad-x))));
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Vertical rhythm for content folds; navbar uses its own inner padding */
+section,
+footer.footer {
+    padding-block: var(--layout-pad-y);
+}
+
+/* Keeps media boxes stable when only width is constrained */
+.aspect-media {
+    aspect-ratio: var(--aspect-ratio, 16 / 9);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

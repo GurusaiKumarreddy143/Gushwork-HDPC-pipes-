@@ -1,0 +1,282 @@
+/* Industries — horizontal carousel, 1:1 cards, Figma-style gradient + blur */
+
+.industries {
+    --ind-accent-tablet: #fbbf24;
+    --ind-accent-mobile: #ec4899;
+    --ind-text: #0d0d0d;
+    --ind-muted: #6b7280;
+    --ind-bg: #f0f0f0;
+    --ind-card-radius: 26px;
+    --ind-card-w-sm: 300px;
+    --ind-card-w-lg: 480px;
+    background: var(--ind-bg);
+    color: var(--ind-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    border-top: none;
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+.industries-inner {
+    min-width: 0;
+    margin-bottom: clamp(24px, 4vw, 32px);
+}
+
+.industries-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ≥360px: title left, arrows right (desktop + tablet) */
+@media (min-width: 360px) {
+    .industries-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+    }
+}
+
+/* <360px: stack — text then arrows (image 3) */
+@media (max-width: 359px) {
+    .industries-header {
+        align-items: flex-start;
+    }
+}
+
+.industries-header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.industries-title {
+    font-size: clamp(1.5rem, 3.8vw, 2.125rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    color: var(--ind-text);
+}
+
+.industries-lead {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ind-muted);
+    margin: 0;
+    max-width: 42rem;
+}
+
+.industries-nav {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.industries-nav-btn {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #e1e3e8;
+    background: #ffffff;
+    color: #262a2e;
+    cursor: pointer;
+    transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.industries-nav-btn:hover:not(:disabled) {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.industries-nav-btn:focus-visible {
+    outline: 2px solid #2b3990;
+    outline-offset: 2px;
+}
+
+.industries-nav-btn:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.industries-nav-icon {
+    font-size: 1.125rem;
+    line-height: 1;
+}
+
+/* Carousel inside .container (max 1240px) — no viewport bleed */
+.industries-scroll-outer {
+    width: 100%;
+    min-width: 0;
+}
+
+.industries-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    outline: none;
+    width: 100%;
+    min-width: 0;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--layout-pad-x, 16px);
+}
+
+.industries-scroll:focus-visible {
+    outline: 2px solid #2b3990;
+    outline-offset: 4px;
+}
+
+.industries-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-bottom: 8px;
+    width: max-content;
+    min-width: 100%;
+    justify-content: flex-start;
+    margin-inline: 0;
+}
+
+/* Card: fixed widths so row overflows horizontally (like provenResults), 1:1 media */
+.industry-card {
+    box-sizing: border-box;
+    flex: 0 0 var(--ind-card-w-sm);
+    width: var(--ind-card-w-sm);
+    min-width: var(--ind-card-w-sm);
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+}
+
+/* Desktop / tablet wide: larger cards + proven-style snap */
+@media (min-width: 800px) {
+    .industries-scroll {
+        scroll-snap-type: x proximity;
+    }
+
+    .industry-card {
+        flex: 0 0 var(--ind-card-w-lg);
+        width: var(--ind-card-w-lg);
+        min-width: var(--ind-card-w-lg);
+        scroll-snap-align: start;
+    }
+}
+
+.industry-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--ind-card-radius);
+    overflow: hidden;
+    background: #1f2937;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.industry-card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Progressive blur (bottom), then gradient — Figma ref */
+.industry-card-blur {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52%;
+    z-index: 1;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 35%, black 55%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 35%, black 55%);
+}
+
+.industry-card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 57.92%,
+        rgba(0, 0, 0, 0.38) 80%,
+        rgba(0, 0, 0, 0.78) 100%
+    );
+}
+
+.industry-card-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 20px 22px 24px;
+    color: #ffffff;
+}
+
+.industry-card-title {
+    font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 10px;
+}
+
+.industry-card-desc {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.55;
+    margin: 0;
+    opacity: 0.96;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (min-width: 800px) {
+    .industry-card-title {
+        font-size: 1.1875rem;
+    }
+
+    .industry-card-desc {
+        font-size: 0.875rem;
+        -webkit-line-clamp: 5;
+    }
+
+    .industry-card-content {
+        padding: 22px 24px 26px;
+    }
+}
+
+@media (max-width: 359px) {
+    .industry-card-desc {
+        -webkit-line-clamp: 5;
+    }
+}
+
+/* Accent bars — match other sections */
+@media (max-width: 799px) {
+    .industries {
+        border-top: 3px solid var(--ind-accent-tablet);
+    }
+}
+
+@media (max-width: 359px) {
+    .industries {
+        border-top: 3px solid var(--ind-accent-mobile);
+    }
+}

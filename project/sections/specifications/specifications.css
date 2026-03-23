@@ -1,0 +1,231 @@
+/* Technical Specifications — dark theme, responsive table */
+
+.specifications {
+    --spec-bg: #0b1220;
+    --spec-surface: #111827;
+    --spec-header-row: #1f2937;
+    --spec-border: rgba(255, 255, 255, 0.08);
+    --spec-text: #f9fafb;
+    --spec-muted: #94a3b8;
+    --spec-accent-tablet: #fbbf24;
+    --spec-accent-mobile: #ec4899;
+    position: relative;
+    background: var(--spec-bg);
+    color: var(--spec-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    border-top: none;
+}
+
+.specifications-inner {
+    min-width: 0;
+}
+
+.specifications-header {
+    margin-bottom: clamp(28px, 4vw, 40px);
+    max-width: 52rem;
+}
+
+.specifications-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 16px;
+}
+
+.specifications-lead {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--spec-muted);
+    margin: 0;
+}
+
+/* Table wrapper */
+.specifications-table-wrap {
+    border-radius: 12px;
+    border: 1px solid var(--spec-border);
+    background: var(--spec-surface);
+    overflow: hidden;
+    margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+.spec-table thead {
+    background: var(--spec-header-row);
+}
+
+.spec-table thead th {
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--spec-border);
+}
+
+.spec-table thead th:last-child {
+    border-left: 1px solid var(--spec-border);
+}
+
+.spec-table tbody th {
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    padding: 16px 20px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--spec-border);
+    border-right: 1px solid var(--spec-border);
+    width: 38%;
+    min-width: 140px;
+}
+
+.spec-table tbody td {
+    color: var(--spec-muted);
+    font-weight: 400;
+    padding: 16px 20px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--spec-border);
+}
+
+.spec-table tbody tr:last-child th,
+.spec-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.spec-flag {
+    margin-right: 6px;
+    font-style: normal;
+}
+
+/* CTA */
+.specifications-cta {
+    display: flex;
+    justify-content: center;
+}
+
+.spec-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.spec-download-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.spec-download-btn:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 3px;
+}
+
+.spec-download-icon {
+    font-size: 1.125rem;
+    line-height: 1;
+    opacity: 0.95;
+}
+
+/* Below 800px: yellow top accent (tablet / narrow layout) */
+@media (max-width: 799px) {
+    .specifications {
+        border-top: 3px solid var(--spec-accent-tablet);
+    }
+
+    .spec-table tbody th {
+        width: 42%;
+    }
+
+    /* Allow horizontal scroll if needed on narrow tablets */
+    .specifications-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .spec-table {
+        min-width: 520px;
+    }
+}
+
+/* Below 360px: pink top accent + stacked rows + full-width CTA */
+@media (max-width: 359px) {
+    .specifications {
+        border-top: 3px solid var(--spec-accent-mobile);
+    }
+
+    .specifications-table-wrap {
+        overflow: visible;
+        border-radius: 12px;
+    }
+
+    .spec-table {
+        min-width: 0;
+        display: block;
+        width: 100%;
+    }
+
+    .spec-table thead {
+        display: none;
+    }
+
+    .spec-table tbody {
+        display: block;
+    }
+
+    .spec-table tbody tr {
+        display: block;
+        padding: 16px 16px 14px;
+        border-bottom: 1px solid var(--spec-border);
+    }
+
+    .spec-table tbody tr:last-child {
+        border-bottom: none;
+        padding-bottom: 16px;
+    }
+
+    .spec-table tbody th,
+    .spec-table tbody td {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: none;
+    }
+
+    .spec-table tbody th {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-bottom: 8px;
+    }
+
+    .spec-table tbody td {
+        font-size: 0.875rem;
+        color: var(--spec-muted);
+        line-height: 1.55;
+    }
+
+    .spec-download-btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}

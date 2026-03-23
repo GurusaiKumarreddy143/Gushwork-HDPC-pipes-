@@ -1,0 +1,242 @@
+/* Complete Piping Solutions — 3-col desktop; stacked &lt;800px; compact &lt;360px */
+
+.complete-pip {
+    --cp-bg: #f0f0f0;
+    --cp-text: #0d0d0d;
+    --cp-muted: #6b7280;
+    --cp-blue: #2b3990;
+    --cp-card: #ffffff;
+    --cp-border: #e5e7eb;
+    --cp-learn-bg: #f3f4f6;
+    --cp-accent-tablet: #fbbf24;
+    --cp-accent-mobile: #ec4899;
+    background: var(--cp-bg);
+    color: var(--cp-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    border-top: none;
+}
+
+.complete-pip-inner {
+    min-width: 0;
+}
+
+.complete-pip-header {
+    text-align: center;
+    max-width: 46rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.complete-pip-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.125rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: var(--cp-text);
+}
+
+.complete-pip-lead {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    line-height: 1.65;
+    color: var(--cp-muted);
+    margin: 0;
+}
+
+.complete-pip-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 3vw, 28px);
+    margin-bottom: clamp(28px, 4vw, 40px);
+    list-style: none;
+    margin-inline: 0;
+    padding: 0;
+}
+
+@media (min-width: 800px) {
+    .complete-pip-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.complete-pip-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--cp-card);
+    border: 1px solid var(--cp-border);
+    border-radius: 16px;
+    padding: clamp(22px, 3vw, 28px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.complete-pip-card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--cp-text);
+    margin: 0 0 12px;
+    text-align: left;
+}
+
+.complete-pip-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--cp-muted);
+    margin: 0 0 18px;
+    text-align: left;
+    flex: 1;
+}
+
+.complete-pip-card-media {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e5e7eb;
+    margin-bottom: 18px;
+}
+
+.complete-pip-card-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.complete-pip-learn {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: var(--cp-learn-bg);
+    border: 1px solid #e1e3e8;
+    color: var(--cp-blue);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    margin-top: auto;
+}
+
+.complete-pip-learn:hover {
+    background: #e8ecf4;
+    border-color: #cbd5e1;
+}
+
+.complete-pip-learn:focus-visible {
+    outline: 2px solid var(--cp-blue);
+    outline-offset: 2px;
+}
+
+/* Bottom CTA */
+.complete-pip-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(20px, 3vw, 32px);
+    background: var(--cp-card);
+    border: 1px solid var(--cp-border);
+    border-radius: 16px;
+    padding: clamp(22px, 4vw, 40px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.complete-pip-cta-copy {
+    flex: 1;
+    min-width: min(100%, 280px);
+}
+
+.complete-pip-cta-headline {
+    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--cp-text);
+    margin: 0 0 8px;
+}
+
+.complete-pip-cta-accent {
+    color: var(--cp-blue);
+    font-weight: 700;
+}
+
+.complete-pip-cta-sub {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--cp-muted);
+    margin: 0;
+}
+
+.complete-pip-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: var(--cp-blue);
+    color: #ffffff;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.complete-pip-cta-btn:hover {
+    background: #1f2a6e;
+}
+
+.complete-pip-cta-btn:focus-visible {
+    outline: 2px solid var(--cp-blue);
+    outline-offset: 3px;
+}
+
+.complete-pip-cta-icon {
+    font-size: 1.125rem;
+    line-height: 1;
+}
+
+/* Tablet / narrow: stack CTA */
+@media (max-width: 799px) {
+    .complete-pip-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .complete-pip-cta-btn {
+        align-self: flex-start;
+    }
+}
+
+/* Very narrow: full-width expert button, tighter cards */
+@media (max-width: 359px) {
+    .complete-pip-card {
+        padding: 18px 16px 20px;
+    }
+
+    .complete-pip-cta-btn {
+        width: 100%;
+        box-sizing: border-box;
+        align-self: stretch;
+    }
+
+    .complete-pip-card-media img {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* Section accents — match other folds */
+@media (max-width: 799px) {
+    .complete-pip {
+        border-top: 3px solid var(--cp-accent-tablet);
+    }
+}
+
+@media (max-width: 359px) {
+    .complete-pip {
+        border-top: 3px solid var(--cp-accent-mobile);
+    }
+}

@@ -1,0 +1,248 @@
+/* Manufacture CTA — two-column ≥800px; stacked &lt;800px; compact &lt;360px */
+
+.manufacture-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.manufacture-cta {
+    --mf-navy: #1e2a6a;
+    --mf-navy-alt: #1e2b67;
+    --mf-form-bg: #f5f5f5;
+    --mf-input-bg: #ffffff;
+    --mf-border: #e1e3e8;
+    --mf-text-dark: #262a2e;
+    --mf-btn: #2d2e32;
+    --mf-accent-tablet: #fbbf24;
+    --mf-accent-mobile: #ec4899;
+    background: #f0f0f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    border-top: none;
+}
+
+.manufacture-inner {
+    min-width: 0;
+}
+
+.manufacture-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(24px, 4vw, 36px);
+    background: var(--mf-navy);
+    color: #ffffff;
+    border-radius: clamp(20px, 4vw, 36px);
+    padding: clamp(24px, 5vw, 48px);
+    box-shadow: 0 12px 48px rgba(15, 23, 42, 0.2);
+}
+
+@media (min-width: 800px) {
+    .manufacture-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: clamp(32px, 5vw, 56px);
+    }
+
+    .manufacture-banner-copy {
+        flex: 1;
+        min-width: 0;
+        max-width: 36rem;
+    }
+
+    .manufacture-form-card {
+        flex: 0 1 420px;
+        width: 100%;
+        max-width: 420px;
+        align-self: stretch;
+    }
+}
+
+.manufacture-title {
+    font-size: clamp(1.375rem, 3.2vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: #ffffff;
+}
+
+.manufacture-lead {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    line-height: 1.65;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0 0 22px;
+}
+
+.manufacture-rule {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    margin: 0 0 20px;
+}
+
+.manufacture-contact {
+    font-size: clamp(0.8125rem, 1.8vw, 0.9375rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+.manufacture-contact-link {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.manufacture-contact-link:hover {
+    color: #e0e7ff;
+}
+
+.manufacture-contact-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.manufacture-form-card {
+    background: var(--mf-form-bg);
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.manufacture-form-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--mf-text-dark);
+    margin: 0 0 20px;
+    text-align: left;
+}
+
+.manufacture-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.manufacture-input,
+.manufacture-cc {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--mf-border);
+    border-radius: 10px;
+    font: inherit;
+    font-size: 0.9375rem;
+    background: var(--mf-input-bg);
+    color: var(--mf-text-dark);
+}
+
+.manufacture-input::placeholder {
+    color: #9ca3af;
+}
+
+.manufacture-input:focus-visible,
+.manufacture-cc:focus-visible {
+    outline: 2px solid #2b3990;
+    outline-offset: 1px;
+}
+
+.manufacture-phone-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.manufacture-cc {
+    flex: 0 0 auto;
+    min-width: 5.25rem;
+    max-width: 6.5rem;
+    cursor: pointer;
+    appearance: auto;
+    background-color: var(--mf-input-bg);
+}
+
+.manufacture-phone-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.manufacture-submit {
+    margin-top: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--mf-btn);
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.manufacture-submit:hover {
+    background: #1a1b1e;
+}
+
+.manufacture-submit:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 359px) {
+    .manufacture-banner {
+        padding: 20px 16px;
+        border-radius: 20px;
+        gap: 20px;
+    }
+
+    .manufacture-form-card {
+        padding: 18px 16px;
+        border-radius: 16px;
+    }
+
+    .manufacture-title {
+        font-size: 1.25rem;
+    }
+
+    .manufacture-lead {
+        font-size: 0.875rem;
+    }
+
+    .manufacture-form {
+        gap: 12px;
+    }
+
+    .manufacture-input,
+    .manufacture-cc {
+        padding: 11px 12px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Section accent bars — match other folds */
+@media (max-width: 799px) {
+    .manufacture-cta {
+        border-top: 3px solid var(--mf-accent-tablet);
+    }
+}
+
+@media (max-width: 359px) {
+    .manufacture-cta {
+        border-top: 3px solid var(--mf-accent-mobile);
+    }
+}
